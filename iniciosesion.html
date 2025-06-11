@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        
+        .crear-cuenta {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+        }
+        
+        .iniciar {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="username" placeholder="Usuario">
+        <input type="password" id="password" placeholder="Contraseña"><br>
+        <button class="iniciar" onclick="login()">Ingresar</button><br>
+        <a href="register.html">
+            si no tienes cuenta , regresa al apartado principal y pulsa el boton de crear una 
+            <br>
+        <a href="index.html">
+            <button style="
+                  padding: 10px 20px;
+                  background-color: #2e7d32;
+                  color: white;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  font-size: 16px;
+                ">
+                  ← Volver al Inicio
+                </button>
+        </a>
+
+        </a>
+        <p id="error-msg" style="color:red;"></p>
+    </div>
+
+
+    <script>
+        function login() {
+            const usuario = document.getElementById('username').value;
+            const clave = document.getElementById('password').value;
+            if (usuario === 'admin' && clave === '1234') {
+                alert('Inicio de sesión exitoso');
+                // window.location.href = "dashboard.html"; // opcional
+            } else {
+                document.getElementById('error-msg').textContent = 'Usuario o contraseña incorrectos';
+            }
+        }
+    </script>
+</body>
+
+</html>
