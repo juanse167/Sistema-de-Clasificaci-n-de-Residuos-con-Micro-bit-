@@ -7,18 +7,24 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #eef2f3;
+            background-color: #e8f5e9;
+            /* verde claro de fondo */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
+            color: #1b5e20;
+            /* texto verde oscuro */
         }
         
         .form-container {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+            /* sombra verde */
             width: 400px;
         }
         
@@ -27,24 +33,52 @@
             width: 100%;
             padding: 10px;
             margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #a5d6a7;
         }
         
         button {
             width: 100%;
             padding: 12px;
-            background-color: #4CAF50;
+            background-color: #66bb6a;
+            /* verde medio */
             color: white;
             border: none;
+            border-radius: 5px;
             margin-top: 10px;
             cursor: pointer;
+            font-weight: bold;
         }
         
         button:hover {
-            background-color: #45a049;
+            background-color: #388e3c;
+            /* verde más oscuro */
         }
         
         h2 {
             text-align: center;
+            color: #2e7d32;
+        }
+        
+        .back-button {
+            margin-top: 25px;
+            text-decoration: none;
+            background-color: #66bb6a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #388e3c;
+        }
+        
+        #mensaje {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -60,8 +94,11 @@
             <input type="password" id="confirmar" placeholder="Confirmar contraseña" required>
             <button type="submit">Registrar</button>
         </form>
-        <p id="mensaje" style="color: red; text-align: center;"></p>
+        <p id="mensaje"></p>
     </div>
+
+    <!-- Botón para volver al inicio -->
+    <a href="indexx.html" class="back-button">← Volver al Inicio</a>
 
     <script>
         function registrarUsuario() {
@@ -70,7 +107,6 @@
             const email = document.getElementById('email').value;
             const contrasena = document.getElementById('contrasena').value;
             const confirmar = document.getElementById('confirmar').value;
-
             const mensaje = document.getElementById('mensaje');
 
             if (contrasena !== confirmar) {
@@ -78,16 +114,14 @@
                 return false;
             }
 
-            // Simula que se guarda el usuario e inicia sesión
             localStorage.setItem('usuarioLogueado', JSON.stringify({
                 nombre: nombre,
                 usuario: usuario,
                 email: email
             }));
 
-            // Redirigir al index.html
             alert('Cuenta creada exitosamente. ¡Bienvenido, ' + nombre + '!');
-            window.location.href = 'index.html';
+            window.location.href = 'indexx.html';
             return false;
         }
     </script>

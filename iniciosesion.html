@@ -7,87 +7,112 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #e8f5e9;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
         }
         
         .login-container {
-            background: white;
+            background: #a5d6a7;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
             text-align: center;
+            width: 350px;
         }
         
         input {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
+            border: 1px solid #388e3c;
+            border-radius: 5px;
         }
         
         button {
             padding: 10px 20px;
-            margin: 10px;
+            margin: 10px 0;
             cursor: pointer;
-        }
-        
-        .crear-cuenta {
-            background-color: #2196F3;
-            color: white;
+            border-radius: 5px;
+            font-weight: bold;
             border: none;
         }
         
         .iniciar {
-            background-color: #4CAF50;
+            background-color: #66bb6a;
+            color: #fff;
+        }
+        
+        .crear-cuenta-link {
+            display: block;
+            margin-top: 15px;
+            color: #2e7d32;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .crear-cuenta-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-button {
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #66bb6a;
             color: white;
-            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #388e3c;
+        }
+        
+        #error-msg {
+            color: red;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
+
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <input type="text" id="username" placeholder="Usuario">
-        <input type="password" id="password" placeholder="Contraseña"><br>
-        <button class="iniciar" onclick="login()">Ingresar</button><br>
-        <a href="register.html">
-            si no tienes cuenta , regresa al apartado principal y pulsa el boton de crear una 
-            <br>
-        <a href="index.html">
-            <button style="
-                  padding: 10px 20px;
-                  background-color: #2e7d32;
-                  color: white;
-                  border: none;
-                  border-radius: 5px;
-                  cursor: pointer;
-                  font-size: 16px;
-                ">
-                  ← Volver al Inicio
-                </button>
-        </a>
+        <input type="text" id="username" placeholder="Usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button class="iniciar" onclick="login()">Ingresar</button>
 
-        </a>
-        <p id="error-msg" style="color:red;"></p>
+        <a class="crear-cuenta-link" href="crear_cuenta.html">¿No tienes cuenta? Crear una aquí</a>
+
+        <p id="error-msg"></p>
     </div>
 
+    <a href="indexx.html" class="back-button">← Volver al Inicio</a>
 
     <script>
         function login() {
             const usuario = document.getElementById('username').value;
             const clave = document.getElementById('password').value;
-            if (usuario === 'admin' && clave === '1234') {
-                alert('Inicio de sesión exitoso');
-                // window.location.href = "dashboard.html"; // opcional
+            const errorMsg = document.getElementById('error-msg');
+
+            const usuarioGuardado = JSON.parse(localStorage.getItem('usuarioLogueado'));
+
+            if (usuarioGuardado && usuario === usuarioGuardado.usuario && clave === "1234") {
+                alert('Inicio de sesión exitoso. ¡Bienvenido, ' + usuarioGuardado.nombre + '!');
+                window.location.href = 'indexx.html';
             } else {
-                document.getElementById('error-msg').textContent = 'Usuario o contraseña incorrectos';
+                errorMsg.textContent = 'Usuario o contraseña incorrectos.';
             }
         }
     </script>
+
 </body>
 
 </html>
