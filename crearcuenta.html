@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Cuenta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            /* verde claro de fondo */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #1b5e20;
+            /* texto verde oscuro */
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+            /* sombra verde */
+            width: 400px;
+        }
+        
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #a5d6a7;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #66bb6a;
+            /* verde medio */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: #388e3c;
+            /* verde más oscuro */
+        }
+        
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+        
+        .back-button {
+            margin-top: 25px;
+            text-decoration: none;
+            background-color: #66bb6a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #388e3c;
+        }
+        
+        #mensaje {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Crear Cuenta</h2>
+        <form onsubmit="return registrarUsuario();">
+            <input type="text" id="nombre" placeholder="Nombre completo" required>
+            <input type="text" id="usuario" placeholder="Nombre de usuario" required>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="contrasena" placeholder="Contraseña" required>
+            <input type="password" id="confirmar" placeholder="Confirmar contraseña" required>
+            <button type="submit">Registrar</button>
+        </form>
+        <p id="mensaje"></p>
+    </div>
+
+    <!-- Botón para volver al inicio -->
+    <a href="indexx.html" class="back-button">← Volver al Inicio</a>
+
+    <script>
+        function registrarUsuario() {
+            const nombre = document.getElementById('nombre').value;
+            const usuario = document.getElementById('usuario').value;
+            const email = document.getElementById('email').value;
+            const contrasena = document.getElementById('contrasena').value;
+            const confirmar = document.getElementById('confirmar').value;
+            const mensaje = document.getElementById('mensaje');
+
+            if (contrasena !== confirmar) {
+                mensaje.textContent = 'Las contraseñas no coinciden.';
+                return false;
+            }
+
+            localStorage.setItem('usuarioLogueado', JSON.stringify({
+                nombre: nombre,
+                usuario: usuario,
+                email: email
+            }));
+
+            alert('Cuenta creada exitosamente. ¡Bienvenido, ' + nombre + '!');
+            window.location.href = 'indexx.html';
+            return false;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #e8f5e9;
+            /* Verde claro */
+            color: #2e7d32;
+            /* Verde oscuro para el texto */
+        }
+        
+        header {
+            background-color: #2e7d32;
+            /* Verde intenso */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin: 20px;
+            display: inline-block;
+            width: 260px;
+            vertical-align: top;
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .contact-card h3 {
+            margin: 10px 0 5px 0;
+            color: #388e3c;
+            /* Verde medio */
+        }
+        
+        .contact-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #2e7d32;
+        }
+        
+        .email-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #66bb6a;
+            /* Verde claro */
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        
+        .email-button:hover {
+            background-color: #43a047;
+            /* Verde más oscuro */
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 20px;
+            background-color: #66bb6a;
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #43a047;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Contacto de los Creadores</h1>
+        <p>¿Tienes preguntas sobre el proyecto? ¡Contáctanos!</p>
+    </header>
+
+    <div class="container">
+        <div class="contact-card">
+            <h3>Juan Guzmán</h3>
+            <p>Email: guzmancarrillojuanse@ieru.edu.co</p>
+            <a class="email-button" href="mailto:guzmancarrillojuanse@ieru.edu.co" target="_blank">Enviar correo</a>
+        </div>
+
+        <div class="contact-card">
+            <h3>Kevin Garavito</h3>
+            <p>Email: garavitolopezkevin@ieru.edu.co</p>
+            <a class="email-button" href="mailto:garavitolopezkevin@ieru.edu.co" target="_blank">Enviar correo</a>
+        </div>
+
+        <div class="contact-card">
+            <h3>Yeiner Valencia</h3>
+            <p>Email: valenciaperezyeiner@ieru.edu.co</p>
+            <a class="email-button" href="mailto:valenciaperezyeiner@ieru.edu.co" target="_blank">Enviar correo</a>
+        </div>
+
+        <!-- Botón para volver al inicio -->
+        <a href="indexx.html" class="back-button">← Volver al Inicio</a>
+    </div>
+
+</body>
+
+</html>
