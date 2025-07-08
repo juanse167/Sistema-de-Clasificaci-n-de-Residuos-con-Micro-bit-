@@ -2,96 +2,303 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Perfil del Usuario</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil de Usuario</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #e8f5e9;
-            color: #1b5e20;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e6f0ff;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
         }
         
-        .perfil-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
-            width: 400px;
+        .profile-container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 380px;
+            padding: 25px 30px;
+        }
+        
+        h1 {
             text-align: center;
-        }
-        
-        h2 {
+            color: #333;
             margin-bottom: 20px;
-            color: #2e7d32;
         }
         
-        .info-item {
-            margin: 10px 0;
-            font-size: 18px;
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2a86ff;
+            display: block;
+            margin: 0 auto 20px auto;
+            cursor: pointer;
         }
         
-        .logout-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #66bb6a;
+        input[type="file"] {
+            display: none;
+        }
+        
+        label.upload-label {
+            display: block;
+            margin: 10px auto 20px;
+            text-align: center;
+            color: #2a86ff;
+            cursor: pointer;
+            font-weight: 600;
+            user-select: none;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        label {
+            font-weight: 600;
+            color: #444;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1.8px solid #ccc;
+            font-size: 1rem;
+            outline-offset: 2px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus {
+            border-color: #2a86ff;
+            outline: none;
+        }
+        
+        button {
+            background-color: #2a86ff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            padding: 12px;
+            font-weight: 700;
             cursor: pointer;
-            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
         
-        .logout-button:hover {
-            background-color: #388e3c;
+        button:hover {
+            background-color: #0053c7;
         }
         
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            color: #1b5e20;
-            font-weight: bold;
+        .message {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .message.error {
+            color: #e03e3e;
+        }
+        
+        .message.success {
+            color: #2ca02c;
         }
     </style>
 </head>
 
 <body>
-    <div class="perfil-container">
-        <h2>Perfil del Usuario</h2>
-        <div id="perfilInfo">
-            <!-- Aquí se mostrará la información -->
-        </div>
-        <button class="logout-button" onclick="cerrarSesion()">Cerrar Sesión</button>
-        <br>
-        <a href="indexx.html" class="back-link">← Volver al Inicio</a>
+
+    <div class="profile-container">
+        <h1>Mi Perfil</h1>
+
+        <!-- Imagen perfil -->
+        <img src="" alt="Foto de Perfil" id="profilePic" class="profile-pic" title="Click para cambiar foto" />
+        <label for="fileInput" class="upload-label">Cambiar foto de perfil</label>
+        <input type="file" id="fileInput" accept="image/*" />
+
+        <form id="profileForm">
+            <label for="nameInput">Nombre completo</label>
+            <input type="text" id="nameInput" name="name" required minlength="3" placeholder="Tu nombre" />
+
+            <label for="emailInput">Correo electrónico</label>
+            <input type="email" id="emailInput" name="email" required placeholder="ejemplo@correo.com" />
+
+            <label for="phoneInput">Teléfono</label>
+            <input type="tel" id="phoneInput" name="phone" placeholder="(Opcional)" pattern="[0-9+\-\s]{7,15}" />
+
+            <button type="submit">Guardar cambios</button>
+        </form>
+
+        <div id="message" class="message"></div>
     </div>
 
     <script>
-        // Obtener datos desde localStorage
-        const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
-        const contenedor = document.getElementById('perfilInfo');
+        const profilePic = document.getElementById('profilePic');
+        const fileInput = document.getElementById('fileInput');
+        const profileForm = document.getElementById('profileForm');
+        const messageDiv = document.getElementById('message');
 
-        if (usuario) {
-            contenedor.innerHTML = `
-                <div class="info-item"><strong>Nombre:</strong> ${usuario.nombre}</div>
-                <div class="info-item"><strong>Usuario:</strong> ${usuario.usuario}</div>
-                <div class="info-item"><strong>Correo:</strong> ${usuario.email}</div>
-            `;
-        } else {
-            contenedor.innerHTML = `<p>No hay sesión iniciada.</p>`;
+        // Simula sesión guardada (email)
+        // Normalmente lo obtienes de tu sistema de login, aquí hardcodeamos o tomamos localStorage:
+        const currentUserEmail = localStorage.getItem('currentUserEmail') || null;
+
+        if (!currentUserEmail) {
+            alert('No hay usuario logueado. Redirigiendo a login...');
+            // Aquí podrías redirigir a login
+            window.location.href = 'login.html';
         }
 
-        function cerrarSesion() {
-            localStorage.removeItem('usuarioLogueado');
-            alert('Sesión cerrada');
-            window.location.href = 'indexx.html';
+        // Carga usuarios desde localStorage
+        function loadUsers() {
+            let users = localStorage.getItem('users');
+            if (users) {
+                try {
+                    return JSON.parse(users);
+                } catch {
+                    return {};
+                }
+            }
+            return {};
         }
+
+        // Guarda usuarios en localStorage
+        function saveUsers(users) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        // Carga info de usuario
+        function loadUserInfo() {
+            const users = loadUsers();
+            if (users[currentUserEmail]) {
+                return users[currentUserEmail];
+            }
+            return null;
+        }
+
+        // Guarda info de usuario
+        function saveUserInfo(updatedUser) {
+            const users = loadUsers();
+            users[currentUserEmail] = updatedUser;
+            saveUsers(users);
+        }
+
+        // Mostrar info en el form y foto
+        function displayUserInfo() {
+            const user = loadUserInfo();
+            if (!user) {
+                alert('Usuario no encontrado. Redirigiendo a login...');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            profilePic.src = user.photo || 'https://via.placeholder.com/120?text=Sin+Foto';
+            profilePic.alt = user.name + ' - Foto de Perfil';
+
+            profileForm.name.value = user.name || '';
+            profileForm.email.value = user.email || '';
+            profileForm.phone.value = user.phone || '';
+        }
+
+        // Leer archivo imagen y mostrar preview + guardar en base64
+        fileInput.addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('image/')) {
+                showMessage('Solo se permiten imágenes.', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = () => {
+                profilePic.src = reader.result;
+                // Guardar nueva foto en usuario y en localStorage
+                const user = loadUserInfo();
+                user.photo = reader.result;
+                saveUserInfo(user);
+                showMessage('Foto actualizada con éxito.', 'success');
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Mostrar mensajes
+        function showMessage(msg, type = 'error') {
+            messageDiv.textContent = msg;
+            messageDiv.className = 'message ' + (type === 'error' ? 'error' : 'success');
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.textContent = '';
+                    messageDiv.className = 'message';
+                }, 3000);
+            }
+        }
+
+        // Validar email
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Validar teléfono simple (opcional)
+        function isValidPhone(phone) {
+            if (!phone) return true;
+            const re = /^[0-9+\-\s]{7,15}$/;
+            return re.test(phone);
+        }
+
+        // Guardar info al enviar el form
+        profileForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const name = profileForm.name.value.trim();
+            const email = profileForm.email.value.trim();
+            const phone = profileForm.phone.value.trim();
+
+            if (name.length < 3) {
+                showMessage('El nombre debe tener al menos 3 caracteres.', 'error');
+                return;
+            }
+            if (!isValidEmail(email)) {
+                showMessage('Correo electrónico inválido.', 'error');
+                return;
+            }
+            if (!isValidPhone(phone)) {
+                showMessage('Teléfono inválido.', 'error');
+                return;
+            }
+
+            // Aquí podrías validar que el email no se cambie a uno que ya exista para otro usuario,
+            // pero para simplificar dejamos que pueda cambiarlo libremente.
+
+            // Guardar en localStorage
+            const user = loadUserInfo();
+            user.name = name;
+            user.email = email;
+            user.phone = phone;
+
+            // Si cambió el email, deberías actualizar la clave en localStorage también (avanzado),
+            // aquí lo dejamos simple y no permitimos cambiar el email para evitar conflictos.
+            if (email !== currentUserEmail) {
+                showMessage('No está permitido cambiar el correo electrónico.', 'error');
+                profileForm.email.value = currentUserEmail; // revertir al original
+                return;
+            }
+
+            saveUserInfo(user);
+            showMessage('Información actualizada con éxito.', 'success');
+        });
+
+        // Iniciar mostrando info
+        displayUserInfo();
     </script>
+
 </body>
 
 </html>

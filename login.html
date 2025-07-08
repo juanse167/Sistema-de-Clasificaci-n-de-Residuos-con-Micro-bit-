@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar Sesión - Mi Proyecto</title>
+    <style>
+        /* RESET */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #5aab61, #a9d18e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            color: #333;
+            overflow-y: auto;
+        }
+        /* CONTAINER */
+        
+        .login-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 100%;
+            padding: 3rem 2.5rem 2.5rem 2.5rem;
+            animation: fadeInScale 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* HEADER */
+        
+        .login-container header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-container header h1 {
+            margin: 0;
+            font-weight: 700;
+            color: #4a7c32;
+            letter-spacing: 1.3px;
+            font-size: 2.2rem;
+        }
+        
+        .login-container header p {
+            margin-top: 0.3rem;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #6b8e23;
+            letter-spacing: 0.02em;
+        }
+        /* FORM */
+        
+        form {
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            user-select: none;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 2px solid #c6d4a5;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: inherit;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #6f9f32;
+            box-shadow: 0 0 10px #9cc466aa;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: #899f58;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+        
+        .toggle-password:hover {
+            color: #557c1f;
+        }
+        /* ERROR MESSAGES */
+        
+        .error-message {
+            color: #d62828;
+            font-size: 0.875rem;
+            margin-top: 6px;
+            display: none;
+            user-select: none;
+        }
+        /* SUBMIT BUTTON */
+        
+        button.login-btn {
+            width: 100%;
+            background: #4a7c32;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            user-select: none;
+            box-shadow: 0 5px 15px #6f9f32aa;
+        }
+        
+        button.login-btn:hover {
+            background-color: #3d6523;
+            box-shadow: 0 8px 18px #557c1fcc;
+            transform: translateY(-2px);
+        }
+        
+        button.login-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px #557c1faa;
+        }
+        /* LINKS */
+        
+        .options {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+        
+        .options a {
+            text-decoration: none;
+            color: #799638;
+            font-weight: 600;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+        
+        .options a:hover {
+            color: #4a7c32;
+            text-decoration: underline;
+        }
+        /* REGISTER INFO */
+        
+        .register-prompt {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1rem;
+            user-select: none;
+        }
+        
+        .register-prompt a {
+            color: #4a7c32;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .register-prompt a:hover {
+            text-decoration: underline;
+            color: #335a18;
+        }
+        /* LOADING SPINNER */
+        
+        .spinner {
+            border: 4px solid #c6d4a5;
+            border-top: 4px solid #4a7c32;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            animation: spin 0.7s linear infinite;
+            margin: 0 auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* SUCCESS MESSAGE */
+        
+        .success-message {
+            margin-top: 1rem;
+            color: #3a6a0a;
+            font-weight: 700;
+            text-align: center;
+            user-select: none;
+            display: none;
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2.5rem 1.5rem 2rem 1.5rem;
+            }
+            button.login-btn {
+                font-size: 1.1rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main role="main" aria-label="Formulario de inicio de sesión">
+        <section class="login-container" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
+            <header>
+                <h1>Iniciar Sesión</h1>
+                <p>Accede a tu cuenta para gestionar tus residuos orgánicos</p>
+            </header>
+
+            <form id="loginForm" novalidate autocomplete="on" aria-describedby="formErrors">
+                <div class="form-group">
+                    <label for="username">Usuario o correo electrónico</label>
+                    <input type="text" id="username" name="username" placeholder="usuario@dominio.com" autocomplete="username" required aria-required="true" aria-describedby="usernameError" />
+                    <div class="error-message" id="usernameError" role="alert" aria-live="assertive"></div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:2.5rem;">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="********" autocomplete="current-password" required aria-required="true" aria-describedby="passwordError" />
+                    <button type="button" class="toggle-password" aria-label="Mostrar contraseña" tabindex="-1">👁️</button>
+                    <div class="error-message" id="passwordError" role="alert" aria-live="assertive"></div>
+                </div>
+
+                <button type="submit" class="login-btn" aria-describedby="formErrors">Ingresar</button>
+                <div class="spinner" aria-hidden="true" id="spinner"></div>
+                <div class="success-message" id="successMessage" role="alert"></div>
+
+                <div id="formErrors" style="margin-top: 1rem; color: #d62828;" aria-live="assertive"></div>
+            </form>
+
+            <div class="options">
+                <a href="recuperar.html" tabindex="0">¿Olvidaste tu contraseña?</a>
+                <a href="registro.html" tabindex="0">Crear cuenta nueva</a>
+            </div>
+
+            <div class="register-prompt">
+                ¿Primera vez aquí? <a href="registro.html" tabindex="0">Regístrate</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (() => {
+            const form = document.getElementById('loginForm');
+            const usernameInput = form.username;
+            const passwordInput = form.password;
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            const spinner = document.getElementById('spinner');
+            const successMessage = document.getElementById('successMessage');
+            const formErrors = document.getElementById('formErrors');
+            const togglePasswordBtn = document.querySelector('.toggle-password');
+
+            // Mostrar/ocultar contraseña
+            togglePasswordBtn.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+            });
+
+            // Simulación de base de datos local para usuarios
+            // En un proyecto real, se haría una llamada a un backend
+            const usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+            // Limpia errores
+            function clearErrors() {
+                usernameError.textContent = '';
+                passwordError.textContent = '';
+                formErrors.textContent = '';
+                successMessage.style.display = 'none';
+            }
+
+            // Validar campos vacíos y formato básico
+            function validarCampos() {
+                let valid = true;
+                clearErrors();
+
+                // Usuario/Email no vacío
+                if (!usernameInput.value.trim()) {
+                    usernameError.textContent = 'El usuario o correo electrónico es obligatorio.';
+                    usernameError.style.display = 'block';
+                    valid = false;
+                } else {
+                    usernameError.style.display = 'none';
+                }
+
+                // Contraseña no vacía
+                if (!passwordInput.value.trim()) {
+                    passwordError.textContent = 'La contraseña es obligatoria.';
+                    passwordError.style.display = 'block';
+                    valid = false;
+                } else {
+                    passwordError.style.display = 'none';
+                }
+
+                return valid;
+            }
+
+            // Validar que usuario y contraseña existan en "base de datos"
+            function validarUsuario(user, pass) {
+                // Buscamos usuario por nombre o correo
+                const usuarioEncontrado = usuariosRegistrados.find(u =>
+                    (u.username.toLowerCase() === user.toLowerCase() || u.email.toLowerCase() === user.toLowerCase()) &&
+                    u.password === pass);
+
+                return usuarioEncontrado || null;
+            }
+
+            // Guardar usuario logueado en localStorage para perfil
+            function guardarSesion(usuario) {
+                localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+            }
+
+            // Simula un retraso para login
+            function simularLogin(user, pass) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        const usuario = validarUsuario(user, pass);
+                        if (usuario) {
+                            resolve(usuario);
+                        } else {
+                            reject('Usuario o contraseña incorrectos.');
+                        }
+                    }, 1200);
+                });
+            }
+
+            form.addEventListener('submit', async(e) => {
+                e.preventDefault();
+
+                if (!validarCampos()) {
+                    formErrors.textContent = 'Por favor corrige los errores arriba.';
+                    return;
+                }
+
+                spinner.style.display = 'block';
+                formErrors.textContent = '';
+                successMessage.style.display = 'none';
+
+                try {
+                    const usuario = await simularLogin(usernameInput.value.trim(), passwordInput.value);
+                    spinner.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.textContent = '¡Inicio de sesión exitoso! Redirigiendo...';
+
+                    guardarSesion(usuario);
+
+                    // Redirigir a perfil después de 1.5 segundos
+                    setTimeout(() => {
+                        window.location.href = 'perfil.html';
+                    }, 1500);
+                } catch (error) {
+                    spinner.style.display = 'none';
+                    formErrors.textContent = error;
+                }
+            });
+
+            // Para pruebas, puedes habilitar este bloque para crear un usuario demo la primera vez
+            /*
+            if (usuariosRegistrados.length === 0) {
+                usuariosRegistrados.push({
+                    username: 'usuarioDemo',
+                    email: 'demo@residuos.com',
+                    password: 'Demo1234',
+                    nombre: 'Usuario Demo',
+                    telefono: '123456789',
+                    fechaRegistro: new Date().toLocaleDateString(),
+                });
+                localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
+            }
+            */
+        })();
+    </script>
+</body>
+
+</html>
