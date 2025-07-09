@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Prácticas | Sistema de Clasificación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0fff0;
+            color: #2f4f2f;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        body.oscuro {
+            background-color: #121212;
+            color: #d0ffd0;
+        }
+        
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        
+        header button {
+            position: absolute;
+            inset-block-start: 20px;
+            inset-inline-end: 20px;
+            background-color: white;
+            color: #2e7d32;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        header button:hover {
+            background-color: #d0ffd0;
+            transform: scale(1.05);
+        }
+        
+        main {
+            padding: 30px;
+        }
+        
+        section {
+            margin-block-end: 40px;
+            background-color: #e8fbe8;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        section h2 {
+            margin-block-start: 0;
+        }
+        
+        ul li {
+            margin: 10px 0;
+        }
+        
+        footer {
+            text-align: center;
+            background-color: #388e3c;
+            color: white;
+            padding: 20px;
+        }
+        
+        .redes-sociales a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .redes-sociales a:hover {
+            transform: scale(1.2);
+            color: #d0ffd0;
+        }
+        
+        .volver {
+            display: inline-block;
+            margin-block-start: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .volver:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Eco-Prácticas</h1>
+        <p>Acciones cotidianas para un planeta sostenible</p>
+        <button onclick="activarModoOscuro()">🌓 Modo Oscuro</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué son las Eco-Prácticas?</h2>
+            <p>Son hábitos diarios que puedes aplicar para reducir tu impacto ambiental, fomentar el reciclaje y promover una convivencia responsable con el planeta. Nuestro sistema con Microbit te ayudará a hacer seguimiento a estas acciones.</p>
+        </section>
+
+        <section>
+            <h2>Ejemplos de Eco-Prácticas</h2>
+            <ul>
+                <li>Separar residuos según su tipo (orgánico, reciclable, no reciclable)</li>
+                <li>Reutilizar frascos, botellas y bolsas</li>
+                <li>Apagar luces y dispositivos que no se estén usando</li>
+                <li>Utilizar medios de transporte sostenibles</li>
+                <li>Reducir el uso de plásticos de un solo uso</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>¿Cómo ayuda la Microbit?</h2>
+            <p>Gracias a sus sensores, Microbit puede alertarte si depositas residuos en el contenedor incorrecto. También puedes programarla para registrar tus buenas prácticas ecológicas y llevar un control personal o grupal de impacto ambiental.</p>
+        </section>
+
+        <a href="../index.html" class="volver">⬅ Volver al inicio</a>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Juan Sebastián Guzmán, Kevin Daniel Garavito y Yeiner Damián</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 - Institución Educativa República de Uruguay</p>
+    </footer>
+
+    <script>
+        function activarModoOscuro() {
+            document.body.classList.toggle('oscuro');
+        }
+    </script>
+</body>
+
+</html>
