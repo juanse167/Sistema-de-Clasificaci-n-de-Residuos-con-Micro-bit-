@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil del Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .perfil-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #2e7d32;
+        }
+        
+        .info-item {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        
+        .logout-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #66bb6a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .logout-button:hover {
+            background-color: #388e3c;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1b5e20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="perfil-container">
+        <h2>Perfil del Usuario</h2>
+        <div id="perfilInfo">
+            <!-- Aquí se mostrará la información -->
+        </div>
+        <button class="logout-button" onclick="cerrarSesion()">Cerrar Sesión</button>
+        <br>
+        <a href="indexx.html" class="back-link">← Volver al Inicio</a>
+    </div>
+
+    <script>
+        // Obtener datos desde localStorage
+        const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
+        const contenedor = document.getElementById('perfilInfo');
+
+        if (usuario) {
+            contenedor.innerHTML = `
+                <div class="info-item"><strong>Nombre:</strong> ${usuario.nombre}</div>
+                <div class="info-item"><strong>Usuario:</strong> ${usuario.usuario}</div>
+                <div class="info-item"><strong>Correo:</strong> ${usuario.email}</div>
+            `;
+        } else {
+            contenedor.innerHTML = `<p>No hay sesión iniciada.</p>`;
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('usuarioLogueado');
+            alert('Sesión cerrada');
+            window.location.href = 'indexx.html';
+        }
+    </script>
+</body>
+
+</html>
