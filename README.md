@@ -1,1 +1,0 @@
-# Sistema-de-Clasificaci-n-de-Residuos-con-Micro-bit-
