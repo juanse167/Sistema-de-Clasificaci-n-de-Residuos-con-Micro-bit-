@@ -35,7 +35,7 @@
         }
         
         .navbar ul li {
-            margin-left: 20px;
+            margin-inline-start: 20px;
         }
         
         .navbar ul li a {

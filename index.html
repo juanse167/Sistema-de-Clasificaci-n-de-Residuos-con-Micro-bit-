@@ -1,0 +1,337 @@
+<!-- Documento HTML completo con iconos Font Awesome y todo el contenido integrado -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Clasificación de Residuos</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papNM8iH+YzS9mE6fw0a1dRnZpB0rltI01JchjKscyovKmoJe+M3bJzN9N6sKTD8BRbxCPVQ0gWmlMGlJfLv8g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f5e6;
+            color: #2d2d2d;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .auth-buttons {
+            position: absolute;
+            inset-inline-end: 20px;
+            inset-block-start: 20px;
+        }
+        
+        .auth-buttons a {
+            background-color: #ffffff;
+            color: #4CAF50;
+            padding: 6px 10px;
+            border-radius: 5px;
+            margin-inline-start: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .auth-buttons a:hover {
+            background-color: #d4ffd4;
+            transform: scale(1.05);
+        }
+        
+        header button {
+            margin-block-start: 10px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #4CAF50;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        header button:hover {
+            background-color: #d4ffd4;
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            background-color: #388E3C;
+            margin: 0;
+        }
+        
+        nav ul li {
+            margin: 10px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.2s;
+        }
+        
+        nav ul li a:hover {
+            color: #caffca;
+            transform: scale(1.1);
+        }
+        
+        .carrusel {
+            position: relative;
+            max-inline-size: 100%;
+            block-size: 450px;
+            overflow: hidden;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slides img {
+            display: none;
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+        }
+        
+        .slide.activa {
+            display: block;
+            animation: fade 1s ease-in-out;
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .botones {
+            text-align: center;
+            margin-block-start: 10px;
+        }
+        
+        .boton-carrusel {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4CAF50;
+            transition: transform 0.2s, color 0.3s;
+        }
+        
+        .boton-carrusel:hover {
+            color: #2e7d32;
+            transform: scale(1.3);
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        section {
+            margin-block-end: 40px;
+        }
+        
+        .imagenes-galeria img {
+            inline-size: 45%;
+            margin: 2.5%;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .imagenes-galeria img:hover {
+            transform: scale(1.05);
+        }
+        
+        .redes-sociales a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .redes-sociales a:hover {
+            transform: scale(1.2);
+            color: #d4ffd4;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .datos-extra,
+        .contenido-extendido {
+            background-color: #f0fff0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-block-start: 20px;
+        }
+        
+        .seccion-aparece {
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="auth-buttons">
+            <a href="/paginas/login.html">Iniciar Sesión</a>
+            <a href="/paginas/registro.html">Registro</a>
+        </div>
+        <h1>Sistema de Clasificación de Residuos con Microbit</h1>
+        <p>Institución Educativa República de Uruguay</p>
+        <button onclick="activarModoOscuro()">🌓 Modo Oscuro</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/paginas/Misión.html">Misión</a></li>
+            <li><a href="/paginas/Visión.html">Visión</a></li>
+            <li><a href="/paginas/Política de Calidad.html">Política de Calidad</a></li>
+            <li><a href="/paginas/Contacto.html">Contacto</a></li>
+            <li><a href="/paginas/Reseñas.html">Reseñas</a></li>
+            <li><a href="/paginas/Eco-Prácticas.html">Eco-Prácticas</a></li>
+        </ul>
+    </nav>
+
+    <section class="carrusel">
+        <div class="slides">
+            <img src="img/carrusel1.jpg" class="slide activa" alt="Imagen naturaleza verde con árboles">
+            <img src="img/carrusel2.jpg" class="slide" alt="Imagen de reciclaje con personas clasificando">
+            <img src="img/carrusel3.jpg" class="slide" alt="Microbit con sensores y residuos">
+        </div>
+        <div class="botones">
+            <button class="boton-carrusel" data-indice="0">●</button>
+            <button class="boton-carrusel" data-indice="1">●</button>
+            <button class="boton-carrusel" data-indice="2">●</button>
+        </div>
+    </section>
+
+    <main>
+        <section class="seccion-aparece">
+            <h2>Bienvenidos</h2>
+            <p>Este proyecto busca concientizar sobre la clasificación de residuos utilizando la tecnología Microbit. Este sistema fomenta el reciclaje en la comunidad escolar y propone una alternativa tecnológica y educativa.</p>
+        </section>
+        <section class="seccion-aparece">
+            <h3>¿Qué es Microbit?</h3>
+            <p>Microbit es una placa de desarrollo educativa que permite interactuar con sensores, luces y programación. Se integra en nuestro sistema para identificar residuos y emitir respuestas visuales o sonoras que ayudan en su clasificación.</p>
+        </section>
+        <section class="seccion-aparece">
+            <h3>Importancia de Clasificar Residuos</h3>
+            <ul>
+                <li>💚 Evita la acumulación de basura no tratada.</li>
+                <li>♻️ Facilita el trabajo de recicladores y empresas de limpieza.</li>
+                <li>🌎 Enseña responsabilidad ambiental desde la infancia.</li>
+            </ul>
+        </section>
+        <section class="imagenes-galeria seccion-aparece">
+            <h3>Galería Educativa</h3>
+            <img src="img/reciclaje1.jpg" alt="Estudiantes reciclando">
+            <img src="img/reciclaje2.jpg" alt="Separación de residuos">
+        </section>
+        <section class="seccion-aparece">
+            <h3>Testimonios</h3>
+            <blockquote>“Nunca había usado tecnología para cuidar el planeta, ahora lo hago todos los días.” – Mariana, grado 7°</blockquote>
+            <blockquote>“Nuestro colegio es más limpio y ordenado gracias al sistema.” – Luis, grado 10°</blockquote>
+        </section>
+        <section class="datos-extra seccion-aparece">
+            <h3>Componentes del sistema</h3>
+            <ul>
+                <li>Microbit con programación en bloques</li>
+                <li>Sensores de proximidad y peso</li>
+                <li>Luces LED de alerta y clasificación</li>
+                <li>Base de datos de residuos</li>
+                <li>Panel educativo interactivo</li>
+            </ul>
+        </section>
+        <section class="contenido-extendido seccion-aparece">
+            <h3>Acciones que puedes aplicar hoy</h3>
+            <ol>
+                <li>Separar residuos en casa según orgánicos, reciclables y no reciclables.</li>
+                <li>Usar etiquetas en recipientes para que otros también clasifiquen.</li>
+                <li>Crear puntos ecológicos en la escuela o barrio.</li>
+                <li>Programar una Microbit para dar alertas cuando se clasifica incorrectamente.</li>
+            </ol>
+            <p>Recuerda que pequeñas acciones generan grandes cambios si se hacen en comunidad. Nuestro sistema no solo te guía, ¡te inspira!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Juan Sebastián Guzmán, Kevin Daniel Garavito y Yeiner Damián</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 - Institución Educativa República de Uruguay</p>
+    </footer>
+
+    <script>
+        let indiceActual = 0;
+        const slides = document.querySelectorAll('.slide');
+        const botones = document.querySelectorAll('.boton-carrusel');
+
+        function mostrarSlide(indice) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('activa');
+                if (i === indice) slide.classList.add('activa');
+            });
+            indiceActual = indice;
+        }
+
+        botones.forEach(btn => {
+            btn.addEventListener('click', () => {
+                mostrarSlide(Number(btn.getAttribute('data-indice')));
+            });
+        });
+
+        setInterval(() => {
+            indiceActual = (indiceActual + 1) % slides.length;
+            mostrarSlide(indiceActual);
+        }, 6000);
+
+        function activarModoOscuro() {
+            document.body.classList.toggle('oscuro');
+        }
+    </script>
+</body>
+
+</html>
