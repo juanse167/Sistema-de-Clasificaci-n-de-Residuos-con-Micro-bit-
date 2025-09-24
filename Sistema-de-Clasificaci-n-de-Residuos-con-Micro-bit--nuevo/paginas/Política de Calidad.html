@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Calidad | Sistema de Clasificación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0fff0;
+            color: #2f4f2f;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro {
+            background-color: #121212;
+            color: #d0ffd0;
+        }
+        
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        
+        header button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: #2e7d32;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        header button:hover {
+            background-color: #d0ffd0;
+            transform: scale(1.05);
+        }
+        
+        main {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            background-color: #e8fbe8;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        body.oscuro section {
+            background-color: #1e1e1e;
+        }
+        
+        section h2 {
+            margin-top: 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        .volver {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .volver:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+        
+        body.oscuro .volver {
+            background-color: #2e7d32;
+            color: #d0ffd0;
+        }
+        
+        footer {
+            text-align: center;
+            background-color: #388e3c;
+            color: white;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro footer {
+            background-color: #1b5e20;
+            color: #d0ffd0;
+        }
+        
+        .redes-sociales a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .redes-sociales a:hover {
+            transform: scale(1.2);
+            color: #d0ffd0;
+        }
+        
+        body.oscuro .redes-sociales a {
+            color: #d0ffd0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Política de Calidad</h1>
+        <p>Comprometidos con la mejora continua y el impacto positivo</p>
+        <button onclick="activarModoOscuro()">🌓 Modo Oscuro</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>Compromiso Institucional</h2>
+            <p>La Institución Educativa República de Uruguay se compromete a implementar, sostener y mejorar un sistema de clasificación de residuos apoyado en tecnología educativa como Microbit. Buscamos fortalecer una cultura ambiental responsable, cumpliendo
+                con estándares de calidad, participación estudiantil y sostenibilidad.</p>
+        </section>
+
+        <section>
+            <h2>Principios de nuestra Política</h2>
+            <ul>
+                <li>Educación ambiental como eje transversal del currículo</li>
+                <li>Participación activa de estudiantes, docentes y comunidad</li>
+                <li>Uso responsable y ético de la tecnología</li>
+                <li>Evaluación constante de procesos y resultados</li>
+                <li>Compromiso con la innovación y el respeto al medio ambiente</li>
+            </ul>
+        </section>
+
+        <a href="../index.html" class="volver">⬅ Volver al inicio</a>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Juan Sebastián Guzmán, Kevin Daniel Garavito y Yeiner Damián</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 - Institución Educativa República de Uruguay</p>
+    </footer>
+
+    <script>
+        function activarModoOscuro() {
+            document.body.classList.toggle('oscuro');
+        }
+    </script>
+</body>
+
+</html>

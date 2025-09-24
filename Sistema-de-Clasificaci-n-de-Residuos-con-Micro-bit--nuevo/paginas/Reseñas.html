@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reseñas | Sistema de Clasificación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fafcfa;
+            color: #2f4f2f;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        body.oscuro {
+            background-color: #0c0c0c;
+            color: #e0e0e0;
+        }
+        
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        
+        header button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: #2e7d32;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        header button:hover {
+            background-color: #d0ffd0;
+            transform: scale(1.05);
+        }
+        
+        main {
+            padding: 30px;
+        }
+        
+        .reseña {
+            background-color: #e8fbe8;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.oscuro .reseña {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        form {
+            background-color: #e8fbe8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.oscuro form {
+            background-color: #1e1e1e;
+        }
+        
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        body.oscuro input,
+        body.oscuro textarea {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #555;
+        }
+        
+        button.enviar {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        button.enviar:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+        
+        .volver {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .volver:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            text-align: center;
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .redes-sociales {
+            margin: 10px 0;
+        }
+        
+        .redes-sociales a {
+            margin: 0 10px;
+            font-size: 22px;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .redes-sociales a:hover {
+            transform: scale(1.2);
+            color: #d0ffd0;
+        }
+        
+        body.oscuro footer {
+            background-color: #1b5e20;
+            color: #e0e0e0;
+        }
+        
+        body.oscuro .redes-sociales a {
+            color: #d0ffd0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Reseñas</h1>
+        <p>Opiniones de estudiantes y comunidad sobre el proyecto</p>
+        <button onclick="activarModoOscuro()">🌓 Modo Oscuro</button>
+    </header>
+
+    <main>
+        <div class="reseña">
+            <p><strong>tomas monsalve:</strong> esta muy cool</p>
+        </div>
+        <div class="reseña">
+            <p><strong>karen henao:</strong> los felicito quedo muy</p>
+        </div>
+
+        <form id="formularioReseña">
+            <h2>Deja tu reseña</h2>
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            <textarea id="comentario" placeholder="Escribe tu comentario aquí..." required></textarea>
+            <button type="submit" class="enviar">Enviar Reseña</button>
+        </form>
+
+        <div id="reseñasExtra"></div>
+
+        <a href="../index.html" class="volver">⬅ Volver al inicio</a>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Juan Sebastián Guzmán, Kevin Daniel Garavito y Yeiner Damián</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 - Institución Educativa República de Uruguay</p>
+    </footer>
+
+    <script>
+        function activarModoOscuro() {
+            document.body.classList.toggle('oscuro');
+        }
+        document.getElementById("formularioReseña").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById("nombre").value.trim();
+            const comentario = document.getElementById("comentario").value.trim();
+            if (nombre && comentario) {
+                const nuevaReseña = document.createElement("div");
+                nuevaReseña.className = "reseña";
+                nuevaReseña.innerHTML = `<p><strong>${nombre}:</strong> ${comentario}</p>`;
+                document.getElementById("reseñasExtra").appendChild(nuevaReseña);
+                document.getElementById("formularioReseña").reset();
+            }
+        });
+    </script>
+</body>
+
+</html>

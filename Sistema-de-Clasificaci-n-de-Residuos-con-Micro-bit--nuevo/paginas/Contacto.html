@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contáctanos | Sistema de Clasificación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #e6f5e6;
+            color: #2d2d2d;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modo-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: #4CAF50;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .modo-btn:hover {
+            background-color: #d4ffd4;
+        }
+        
+        main {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #ffffffc9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.oscuro main {
+            background-color: #1e1e1e;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-top: 10px;
+        }
+        
+        input,
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+        
+        body.oscuro input,
+        body.oscuro textarea {
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            border: 1px solid #555;
+        }
+        
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        button:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+        
+        .volver {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .volver a {
+            background-color: #388e3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .volver a:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+        
+        body.oscuro footer {
+            background-color: #1b5e20;
+        }
+        
+        .redes-sociales {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .redes-sociales a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .redes-sociales a:hover {
+            transform: scale(1.2);
+            color: #d0ffd0;
+        }
+        
+        body.oscuro .redes-sociales a {
+            color: #d0ffd0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Contáctanos</h1>
+        <p>¿Tienes dudas o sugerencias? ¡Escríbenos!</p>
+        <button class="modo-btn" onclick="activarModoOscuro()">🌓 Modo Oscuro</button>
+    </header>
+
+    <main>
+        <h2>Formulario de Contacto</h2>
+        <form>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" required />
+
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" required />
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div class="volver">
+            <a href="../index.html"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Juan Sebastián Guzmán, Kevin Daniel Garavito y Yeiner Damián</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 - Institución Educativa República de Uruguay</p>
+    </footer>
+
+    <script>
+        function activarModoOscuro() {
+            document.body.classList.toggle('oscuro');
+        }
+    </script>
+</body>
+
+</html>

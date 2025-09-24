@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro - Sistema de Clasificación de Residuos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f5e6;
+            color: #2d2d2d;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        body.oscuro header {
+            background-color: #2d5a2d;
+        }
+        
+        main {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: auto;
+            background-color: #ffffffb0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        
+        body.oscuro main {
+            background-color: #1f1f1f;
+        }
+        
+        h1,
+        h2 {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+        
+        h2 {
+            color: #4CAF50;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin: 10px 0 5px;
+        }
+        
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro input {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            border: 1px solid #555;
+        }
+        
+        button {
+            padding: 10px 16px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #4CAF50;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+        
+        button:hover {
+            background-color: #d4ffd4;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.oscuro button {
+            background-color: #1f1f1f;
+            color: #d0ffd0;
+            border-color: #d0ffd0;
+        }
+        
+        .volver {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .redes-sociales {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .redes-sociales a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #4CAF50;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .redes-sociales a:hover {
+            transform: scale(1.2);
+            color: #2e7d32;
+        }
+        
+        body.oscuro .redes-sociales a {
+            color: #d0ffd0;
+        }
+        
+        footer {
+            background-color: #4CAF50;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.oscuro footer {
+            background-color: #1b5e20;
+            color: #d0ffd0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Registro de Usuario</h1>
+        <p>Institución Educativa República de Uruguay</p>
+        <button onclick="activarModoOscuro()">🌓 <strong>Modo Oscuro</strong></button>
+    </header>
+
+    <main>
+        <h2>Crear Cuenta</h2>
+        <form>
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres" required>
+
+            <label for="confirmar">Confirmar Contraseña</label>
+            <input type="password" id="confirmar" name="confirmar" placeholder="Repite la contraseña" required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <div class="volver">
+            <a href="../index.html">
+                <button>⬅ Volver al inicio</button>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Juan Sebastián Guzmán, Kevin Daniel Garavito y Yeiner Damián</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 - Institución Educativa República de Uruguay</p>
+    </footer>
+
+    <script>
+        function activarModoOscuro() {
+            document.body.classList.toggle('oscuro');
+        }
+    </script>
+</body>
+
+</html>
